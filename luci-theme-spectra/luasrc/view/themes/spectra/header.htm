@@ -58,34 +58,6 @@
 	local brand_name = boardinfo.hostname or "?"
 -%>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-dns-prefetch-control" content="on">
-	 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-         <link rel="dns-prefetch" href="//whois.pconline.com.cn">
-        <link rel="dns-prefetch" href="//forge.speedtest.cn">
-        <link rel="dns-prefetch" href="//api-ipv4.ip.sb">
-        <link rel="dns-prefetch" href="//api.ipify.org">
-        <link rel="dns-prefetch" href="//api.ttt.sh">
-        <link rel="dns-prefetch" href="//qqwry.api.skk.moe">
-        <link rel="dns-prefetch" href="//d.skk.moe">
-        <link rel="preconnect" href="https://forge.speedtest.cn">
-        <link rel="preconnect" href="https://whois.pconline.com.cn">
-        <link rel="preconnect" href="https://api-ipv4.ip.sb">
-        <link rel="preconnect" href="https://api.ipify.org">
-        <link rel="preconnect" href="https://api.ttt.sh">
-        <link rel="preconnect" href="https://qqwry.api.skk.moe">
-        <link rel="preconnect" href="https://d.skk.moe">
-</head>
-</html>
- <script src="/luci-static/ssr/js/jquery.min.js"></script>
-
-<html lang="<%=luci.i18n.context.lang%>">
-
-<head>
     <style>
         header {
             background-color: transparent;
@@ -298,6 +270,7 @@ body {
 		opacity: 0;
 	}
 }
+
 </style>
 <header>
 	<div class="fill">
@@ -328,99 +301,13 @@ body {
                 <a href='/cgi-bin/luci/admin/network/network'><img src="<%=media%>/navbar/interface.gif" width="35" height="35"></a>
             </div>
         </div>
-    <fieldset class="cbi-section">
-        <div class="pure-g status">
-            <div class="siz">
-                <div class="block pure-g">
-                    <div class="pure-u-9-24">
-                        <div class="img-con">
-                            <img src="/luci-static/ssr/img/loading.svg" id="flag" class="pure-img" alt="IP Flag">
-                        </div>
-                    </div>
-                    <div class="pure-u-10-24">
-                        <h4><span id="d-ip" class="green"><%:Checking...%></span> <span class="green" id="ipip"></span></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-</header>
-<style>
-.pure-g.status {
-    display: flex;
-    align-items: center;     
-    justify-content: flex-start; 
-    gap: 10px;             
-    margin-top: 20px;  
-    background: transparent;    
-}
-
-.img-con {
-    display: flex;
-    align-items: center;     
-    justify-content: center; 
-    margin-left: 20px; 
-    transform: translateY(20px); 
-    background: transparent;
-
-}
-
-#d-ip, #ipip {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: transparent;
-}
-
-.pure-img {
-    width: 60px;  
-    height: auto;  
-    background: transparent;
-}
-
-.pure-u-10-24 {
-    display: flex;
-    flex-direction: column;  
-    justify-content: center; 
-    align-items: center;
-    gap: 0;
-    margin-left: 50px;    
-    line-height: 1.5; 
-    background: transparent;
-}
-
-.green {
-    font-size: 16px;
-    color: #2dce89;   
-    background: transparent;
-
-}
-
-#ipip {
-    font-size: 14px;
-    color: #666;      
-    text-align: center;
-    background: transparent;
-}
-
-h4 {
-    margin: 0;
-    background: transparent;
-}
-
-#d-ip {
-    margin-bottom: 0;  
-    background: transparent;
-}
-
-.ip-info span {
-    transform: translateX(-17px);  
-    color: #FF00FF;
-    background: transparent;
-} 
-</style>
-
+    <div style="display: flex; align-items: center; font-family: Arial, sans-serif; padding: 20px; height: 100vh; justify-content: center; margin-top: 10px;">
+        <img id="flag" style="width: 60px; height: 40px; margin-right: 8px; vertical-align: middle; cursor: pointer;" alt="IP Flag" title="点击刷新 IP 地址">
+        <h4 style="font-size: 1rem; margin: 0;">
+            <span id="d-ip" style="color: #09B63F !important; font-weight: bold;  display: block; font-size: 17px; margin-bottom: 5px;">Checking...</span>
+            <span id="ipip" style="color: #FF00FF !important; font-weight: bold;  display: block; text-indent: -1ch;"></span>
+        </h4>
+    </div>
 <script type="text/javascript">
     const _IMG = '/luci-static/ssr/';
     const translate = {
@@ -620,17 +507,10 @@ h4 {
 'Yemen': '也门',
 'Zambia': '赞比亚',
 'Zimbabwe': '津巴布韦',
-    };  
+        }; 
 
     let cachedIP = null;
     let cachedInfo = null;
-
-    async function updateIP() {
-        await IP.getIpipnetIP();
-        document.getElementById('d-ip').style.display = 'none';
-        document.getElementById('d-ip').offsetHeight; 
-        document.getElementById('d-ip').style.display = 'flex';
-    }
 
     async function onlineTranslate(text, targetLang = 'zh') {
         if (!text || typeof text !== 'string' || text.trim() === '') {
@@ -662,16 +542,6 @@ h4 {
                     'Content-Type': 'application/json'
                 },
                 parseResponse: (data) => data.translatedText
-            },
-            {
-                url: `https://lingva.ml/api/v1/en/${targetLang}/${encodeURIComponent(text)}`,
-                method: 'GET',
-                parseResponse: (data) => data.translation
-            },
-            {
-                url: `https://simplytranslate.org/api/translate?engine=google&from=en&to=${targetLang}&text=${encodeURIComponent(text)}`,
-                method: 'GET',
-                parseResponse: (data) => data.translatedText
             }
         ];
 
@@ -686,14 +556,7 @@ h4 {
                 if (response.ok) {
                     const data = await response.json();
                     const translatedText = api.parseResponse(data);
-                    
-                    try {
-                        localStorage.setItem(cacheKey, translatedText);
-                    } catch (e) {
-                        clearOldCache();
-                        localStorage.setItem(cacheKey, translatedText);
-                    }
-                    
+                    localStorage.setItem(cacheKey, translatedText);
                     return translatedText;
                 }
             } catch (error) {
@@ -706,10 +569,8 @@ h4 {
 
     function clearOldCache() {
         const cachePrefix = 'trans_';
-        const cacheKeys = Object.keys(localStorage).filter(key => 
-            key.startsWith(cachePrefix)
-        );
-        
+        const cacheKeys = Object.keys(localStorage).filter(key => key.startsWith(cachePrefix));
+
         if (cacheKeys.length > 1000) {
             console.log("Cleaning up localStorage cache");
             const itemsToRemove = cacheKeys.slice(0, cacheKeys.length - 1000);
@@ -720,7 +581,7 @@ h4 {
     async function translateText(text, targetLang = 'zh') {
         if (translate[text]) {
             return translate[text];
-        } 
+        }
         return await onlineTranslate(text, targetLang);
     }
 
@@ -739,23 +600,23 @@ h4 {
 
         fetchIP: async () => {
             let error;
-            for(let api of IP.ipApis) {
+            for (let api of IP.ipApis) {
                 try {
                     const response = await IP.get(api.url, api.type);
-                    if(api.type === 'json') {
+                    if (api.type === 'json') {
                         const ipData = api.key ? response.data[api.key] : response.data;
                         cachedIP = ipData;
                         document.getElementById('d-ip').innerHTML = ipData;
                         return ipData;
                     } else {
                         const ipData = response.data.match(/\d+\.\d+\.\d+\.\d+/)?.[0];
-                        if(ipData) {
+                        if (ipData) {
                             cachedIP = ipData;
                             document.getElementById('d-ip').innerHTML = ipData;
                             return ipData;
                         }
                     }
-                } catch(e) {
+                } catch (e) {
                     error = e;
                     console.error(`Error with ${api.url}:`, e);
                     continue;
@@ -797,25 +658,24 @@ h4 {
             let geoData = null;
             let error;
 
-            for(let api of geoApis) {
+            for (let api of geoApis) {
                 try {
                     const response = await IP.get(api.url, api.type);
                     geoData = response.data;
                     break;
-                } catch(e) {
+                } catch (e) {
                     error = e;
                     console.error(`Error with ${api.url}:`, e);
                     continue;
                 }
             }
 
-            if(!geoData) {
+            if (!geoData) {
                 throw error || new Error("All Geo APIs failed");
             }
 
             cachedIP = ip;
             IP.lastGeoData = geoData; 
-            
             IP.updateUI(geoData, elID);
         },
 
@@ -828,31 +688,29 @@ h4 {
                 const asnOrganization = await translateText(data.asn_organization || "");
 
                 let location = `${region && city && region !== city ? `${region} ${city}` : region || city || ''}`;
-        
                 let simpleDisplay = `
-                    <div class="ip-main" style="cursor: pointer;" onclick="IP.showDetailModal()">
-                        ${cachedIP}
+                    <div class="ip-main" style="cursor: pointer;" onclick="IP.showDetailModal()" >
+                        ${cachedIP} <span class="badge badge-primary" style="color: #fd7e14; background: #f0f8ff; border-radius: 4px; padding: 2px 4px;"">${country}</span>
                     </div>`;
         
-                let locationInfo = `
-                    <div class="ip-info">
-                        <span class="green">${country} ${location} ${isp} ${data.asn || ''} ${asnOrganization}</span>
-                    </div>`;
+                let locationInfo = `<span style="margin-left: 8px;">${location} ${isp} ${data.asn || ''} ${asnOrganization}</span>`;
         
                 document.getElementById('d-ip').innerHTML = simpleDisplay;
                 document.getElementById('ipip').innerHTML = locationInfo;
+                const countryCode = data.country_code || 'unknown';
+                const flagSrc = (countryCode !== 'unknown') ? _IMG + "flags/" + countryCode.toLowerCase() + ".png" : '/luci-static/ssr/flags/cn.png';
+                $("#flag").attr("src", flagSrc);
         
-                $("#flag").attr("src", _IMG + "flags/" + (data.country_code || 'unknown').toLowerCase() + ".png");
-
             } catch (error) {
                 console.error("Error in updateUI:", error);
-               document.getElementById('d-ip').innerHTML = `更新 IP 信息失败: ${error.message}`;
+                document.getElementById('d-ip').innerHTML = "更新 IP 信息失败";
+                $("#flag").attr("src", "./assets/neko/flags/mo.png");
             }
         },
 
         getIpipnetIP: async () => {
-            if(IP.isRefreshing) return;
-        
+            if (IP.isRefreshing) return;
+
             try {
                 IP.isRefreshing = true;
                 document.getElementById('d-ip').innerHTML = `
@@ -863,7 +721,7 @@ h4 {
                 `;
                 document.getElementById('ipip').innerHTML = "";
                 $("#flag").attr("src", _IMG + "img/loading.svg");
-            
+
                 const ip = await IP.fetchIP();
                 await IP.Ipip(ip, 'ipip');
             } catch (error) {
@@ -879,13 +737,11 @@ h4 {
         IP.getIpipnetIP();
     });
 
-    IP.getIpipnetIP();
-    if(typeof checkSiteStatus !== 'undefined') {
-        checkSiteStatus.check();
-        setInterval(() => checkSiteStatus.check(), 30000);
-    }
+    IP.getIpipnetIP();  
 
-    setInterval(IP.getIpipnetIP, 180000);
+    setInterval(() => {
+        IP.getIpipnetIP();
+    }, 180000); 
 </script>
 
 <script>
