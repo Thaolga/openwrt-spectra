@@ -14,12 +14,4 @@ LUCI_MINIFY_CSS:=0
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
-define Package/$(LUCI_PKGNAME)/install
-    $(INSTALL_DIR) $(1)/usr/libexec/spectra
-    $(INSTALL_BIN) ./root/usr/libexec/spectra/bing_wallpaper $(1)/usr/libexec/spectra/
-    $(INSTALL_BIN) ./root/usr/libexec/spectra/online_wallpaper $(1)/usr/libexec/spectra/
-    chmod 0755 $(1)/usr/libexec/spectra/bing_wallpaper
-    chmod 0755 $(1)/usr/libexec/spectra/online_wallpaper
-endef
-
 # call BuildPackage - OpenWrt buildroot signature
