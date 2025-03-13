@@ -57,10 +57,62 @@
 	-- Brand name
 	local brand_name = boardinfo.hostname or "?"
 -%>
-
     <style>
-        body * {
-             font-family: Helvetica, Arial, sans-serif !important;
+        body,
+        body *:not(script):not(style):not(link) {  
+          font-family: 
+            system-ui,
+            -apple-system,               
+            "Segoe UI Variable",            
+            "Microsoft YaHei UI",         
+            "HarmonyOS Sans SC",         
+            "PingFang SC", 
+            "Noto Sans CJK SC",
+            "Source Han Sans SC",
+            sans-serif !important;
+          font-synthesis: none !important; 
+
+        }
+
+        @font-face {
+          font-family: "Fallback Sans";
+          src: local("Arial"), local("Liberation Sans");
+          ascent-override: 95%;
+          descent-override: 20%;
+          line-gap-override: 0;
+        }
+
+        body {
+          font-family: 
+            var(--system-font-stack), 
+            "Fallback Sans" !important;
+          -webkit-font-smoothing: auto !important;
+          font-smooth: never !important; 
+        }
+
+        :lang(zh) {
+          hanging-punctuation: first allow-end !important; 
+        }
+
+        h2:not(.keep-default) {
+          font-family: 
+            ui-sans-serif,     
+            "HarmonyOS Sans SC Bold",
+            "Microsoft YaHei Bold",
+            sans-serif !important;
+          font-size: 1.8em !important;  
+          font-weight: bolder !important;  
+        }
+
+        h3:not(.keep-default) {
+          font-family: 
+            ui-sans-serif,
+            "HarmonyOS Sans SC Medium",
+            "Microsoft YaHei",
+            sans-serif !important;
+            font-size: 1.2em !important;  
+            font-weight: normal !important;
+            font-style: oblique 8deg !important; 
         }
 
         header {
@@ -72,6 +124,7 @@
         .box {
             width: 40px;
             height: 40px;
+            margin: 0 8px;
             background: transparent;
             margin: 0 10px;
             display: flex;
@@ -82,19 +135,21 @@
             overflow: hidden;
             box-shadow: 0 6px 6px 3px #00ffff9a;
         }
+
         .box img {
             display: block;
-            margin: auto; /* Memposisikan gambar di tengah secara horizontal dan vertikal */
+            margin: auto; 
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            transition: filter 0.2s ease-in-out; /* Transisi saat hover */
+            transition: filter 0.2s ease-in-out; 
         }
 
         .box:hover img {
-            filter: drop-shadow(0 0 5px cyan); /* Efek bayangan saat hover */
+            filter: drop-shadow(0 0 5px cyan); 
         }
+
         .box i {
             z-index: 5;
             font-size: 45px;
@@ -103,41 +158,50 @@
 
         .box-area {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly; 
             align-items: center;
+            margin: 30px 0 40px;
+            padding: 0 15px; 
         }
 
         .ip-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100px; 
-            margin: 20px 0;
+            padding: 15px 20px;
             position: relative;
-            z-index: 1; 
+            z-index: 1;
+            transform: translateY(1px); 
         }
+
         #flag {
             width: 60px;
             height: 40px;
-            margin-right: 15px;
-            cursor: pointer;
+            margin-right: 25px; 
+            margin-left: 15px; 
         }
+
         .ip-text {
             font-family: Arial, sans-serif;
             line-height: 1.4;
         }
+
         #d-ip {
             color: #09B63F !important;
             font-weight: bold;
             font-size: 15px;
             position: relative;
             left: 0.5em; 
+            margin-bottom: 3px; 
         }
+
         #ipip {
             color: #FF00FF !important;
             font-weight: bold;
             font-size: 14px;
             display: block;
+            margin-top: 3px; 
+            margin-bottom: 3px; 
         }
        
 </style>
@@ -167,6 +231,7 @@
 	<meta name="msapplication-TileImage" content="<%=media%>/icon/ms-icon-144x144.png">
 	<meta name="theme-color" content="<%=bar_color%>">
 	<link rel="stylesheet" href="<%=media%>/css/cascade.css?v=2.3.1">
+        <script src="/luci-static/spectra/js/custom.js"></script>
 	<style title="text/css">
 		<% if mode ~= 'dark' then %>
 			@media (prefers-color-scheme: dark) {
@@ -229,86 +294,10 @@
 		<span></span>
 		<span></span>
 		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
 </div>
-<style>
-body {
-	background: #111;
-	height: 100vh;
-}
-.wrapper span {
-	position: fixed;
-	bottom: -180px;
-	height: 50px;
-	width: 50px;
-	z-index: -1;
-	background-color: #18191f;
-	box-shadow: 0 0 50px cyan, 0 0 100px cyan, 0 0 150px cyan, 0 0 200px cyan;
-	animation: animate 8s linear infinite;
-}
-
-.wrapper span:nth-child(1) {
-	left: 60px;
-	animation-delay: 0.6s;
-}
-.wrapper span:nth-child(2) {
-	left: 10%;
-	animation-delay: 3s;
-	width: 60px;
-	height: 60px;
-}
-.wrapper span:nth-child(3) {
-	left: 20%;
-	animation-delay: 2s;
-}
-.wrapper span:nth-child(4) {
-	left: 30%;
-	animation-delay: 5s;
-	width: 80px;
-	height: 80px;
-}
-.wrapper span:nth-child(5) {
-	left: 40%;
-	animation-delay: 1s;
-}
-.wrapper span:nth-child(6) {
-	left: 50%;
-	animation-delay: 7s;
-}
-.wrapper span:nth-child(7) {
-	left: 60%;
-	animation-delay: 6s;
-	width: 100px;
-	height: 100px;
-}
-.wrapper span:nth-child(8) {
-	left: 70%;
-	animation-delay: 8s;
-}
-.wrapper span:nth-child(9) {
-	left: 80%;
-	animation-delay: 6s;
-	width: 90px;
-	height: 90px;
-}
-.wrapper span:nth-child(10) {
-	left: 90%;
-	animation-delay: 4s;
-}
-@keyframes animate {
-	0% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-	80% {
-		opacity: .7;
-	}
-	100% {
-		transform: translateY(-800px) rotate(360deg);
-		opacity: 0;
-	}
-}
-
-</style>
 <header>
 	<div class="fill">
 		<div class="container">
@@ -345,16 +334,6 @@ body {
             <span id="ipip"></span>
         </div>
     </div>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const h4Element = document.querySelector("h4"); 
-    if (h4Element) {
-        h4Element.style.backgroundColor = "rgba(0, 0, 0, 0.05)"; 
-        h4Element.style.padding = "10px"; 
-        h4Element.style.borderRadius = "5px"; 
-    }
-});
-</script>
 <script type="text/javascript">
     const _IMG = '/luci-static/ipip/';
     const translate = {

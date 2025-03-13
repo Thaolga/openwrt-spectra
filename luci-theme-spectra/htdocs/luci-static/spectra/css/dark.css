@@ -1,6 +1,10 @@
 body {
-  background:  #1e1e1e;
-  color: #cccccc;
+  background: url('/luci-static/spectra/background/bg1.jpg') no-repeat center center fixed !important;
+  background-size: cover !important; 
+  background: #111;
+  height: 100vh;
+  overflow: hidden; 
+  z-index: 9999;
 }
 .login-page .login-container .login-form {
   background-color: transparent;
@@ -41,7 +45,6 @@ header::after {
   background: linear-gradient(to right, #0000009a, transparent);
   box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  margin-left: 15px;
 }
 .main .main-left .sidenav-header .brand {
   color: #cccccc;
@@ -64,16 +67,45 @@ header::after {
 .main .main-left .nav .slide .slide-menu li::after {
   background-color: cyan !important;
 }
+
+.main .main-left .nav .slide a.menu {
+  color: #FFDAB9 !important;
+}
+
+.food {
+  color: #FFDAB9 !important; 
+}
+
+.main .main-left .nav .slide a.menu.active {
+  color: #FFDAB9 !important; 
+}
+
+.main .main-left .nav .slide .slide-menu li a {
+  color: #00ffcc !important; 
+}
+
+.main .main-left .nav .slide .slide-menu .active a {
+  color: #ffcc00 !important; 
+}
+
+.main .main-left .nav .slide .slide-menu li a:hover {
+  color: #FFDAB9 !important; 
+}
+
+.main .main-left .nav .slide .slide-menu li {
+  padding-left: 10px !important; 
+}
+
 .main .main-left .nav .slide .menu.active {
-  background-color: #483d8b !important;
-  background-color: darkcyan !important;
-  color: #ffffff !important;
+  background-color: #483d8b;
+  background-color: darkcyan;
+  color: #8B4513;
 }
 .main .main-left .nav .slide .menu.active a::after {
-  background-color: #ffffff !important;
+  background-color: #8B4513;
 }
 .main .main-left .nav li a {
-  color: white !important;
+  color: white;
 }
 .main .main-left .nav li a:hover {
   background-color: #483d8b !important;
@@ -89,25 +121,11 @@ header::after {
 .main .main-right {
   background-color: transparent; <!-- warna bg diluar system dll -->
 }
-h2 {
-  color: cyan;
-  background: linear-gradient(to right, #0000009a, transparent);
-}
-h3 {
-  color: #ccc;
-  border-bottom: 0;
-  background: #333333;
-}
-h4 {
-  color: #8c6900;
-}
+
 abbr {
   color: var(--dark-primary) !important;
 }
-a:-webkit-any-link {
-  color: #483d8b;
-  color: var(--dark-primary);
-}
+
 input:-webkit-autofill {
   background-color: #3c3c3c !important;
 }
@@ -141,7 +159,7 @@ header.bg-primary {
 }
 div > table > tbody > tr:nth-of-type(2n),
 div > .table > .tr:nth-of-type(2n) {
-  background-color: transparent;
+  background-color: rgba(37, 37, 38, 0.1); 
 }
 table > tbody > tr > td,
 table > tfoot > tr > td,
@@ -149,7 +167,7 @@ table > thead > tr > td {
   color: #cccccc;
 }
 fieldset > table > tbody > tr:nth-of-type(2n) {
-  background-color: transparent;
+  background-color: rgba(37, 37, 38, 0.1); 
 }
 table > tbody > tr > td,
 table > tfoot > tr > td,
@@ -204,7 +222,7 @@ tr > th,
 .cbi-section-table-row::before,
 #cbi-wireless > #wifi_assoclist_table > .tr:nth-child(2) {
   border-top: 0;
-  color: white;
+  color: #00FFFF;
 }
 .cbi-rowstyle-2 {
   background-color: transparent;
@@ -219,12 +237,10 @@ body:not(.Interfaces) .cbi-rowstyle-2:first-child {
 }
 .cbi-section > h3:first-child,
 .panel-title,
-h3 {
-  color: cyan;
-  background: linear-gradient(to right, #0000009a, transparent);
-}
-h4 {
-  background-color: #0000009a;
+h2, h3, h4 {
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 }
 .cbi-progressbar {
   background: linear-gradient(to right, #0000009a, #0000);
@@ -233,7 +249,9 @@ h4 {
   background-color: darkcyan !important;
 }
 .cbi-section-table .cbi-section-table-titles .cbi-section-table-cell {
-  background-color: #1e1e1f;
+    background: rgba(0, 0, 0, 0.26) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(10px) !important;
 }
 .cbi-button {
   color: #ffffff !important;
@@ -310,7 +328,9 @@ div > .table > .tbody > .tr:nth-of-type(2n) {
   border-bottom: none !important;
 }
 .cbi-tabcontainer > .cbi-value:nth-of-type(2n) {
-  background-color: #252526;
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 }
 .cbi-value-title {
   color: #ccc;
@@ -357,16 +377,18 @@ select {
   color: #ccc;
 }
 .cbi-input-textarea {
-  background-color: #1e1e1e;
-  color: #ccc;
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    color: #FFE4C4;
 }
 textarea:focus-visible {
   border: 1px solid var(--dark-primary);
 }
 .cbi-section-remove:nth-of-type(2n),
-.cbi-section-node:nth-of-type(2n) {
-  background-color: #0000009a;
-}
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 .node-system-packages > .main table tr td:nth-last-child(1) {
   color: #ccc;
 }
@@ -439,8 +461,8 @@ td.cbi-value-field var {
 .cbi-input-reload,
 .cbi-button-reload {
   color: #fff !important;
-  background: darkolivegreen !important;
-  border-color: darkolivegreen !important;
+  background: #3498db !important;
+  border-color: #3498db !important;
 }
 .cbi-button-reset,
 .cbi-input-remove {
@@ -488,7 +510,9 @@ header .fill .status span[data-style="active"] {
 [data-page="admin-network-diagnostics"] .tr > .td,
 .tr.table-titles > .th,
 .tr.cbi-section-table-titles > .th {
-  background-color: transparent;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.62) !important;
+    backdrop-filter: blur(10px) !important;
 }
 .network-status-table .ifacebox-body .ifacebadge {
   background: linear-gradient(to right, #0000009a, transparent);
@@ -542,7 +566,8 @@ div[style="width:100%;height:300px;border:1px solid #000;background:#fff"] {
 }
 [data-page="admin-system-flash"] .modal .btn {
   white-space: normal !important;
-  background-color: darkseagreen;
+  background-color: darkseagreen!important;
+  border-radius: 8px !important;
 }
 [data-page="admin-system-flash"] .modal .alert-message {
   background-color: transparent !important;
@@ -567,7 +592,9 @@ input,
   color: #ccc;
 }
 .cbi-section-table-row {
-  background-color: transparent; !important;
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 }
 .modal {
   background-color: #0000009a;
@@ -613,6 +640,29 @@ input,
   border: 1px solid #3c3c3c !important;
 }
 
+.slide-menu li:before {
+    content: "";
+    left: -8px; 
+    top: -50%;
+    bottom: 50%;
+    position: absolute;
+    display: block;
+    width: 1px;
+    border-left: 1px dashed #66FFFF ;
+    z-index: 1;
+}
+
+.slide-menu li a:before {
+    content: "";
+    left: -20px;
+    top: 50%;
+    position: absolute;
+    display: block;
+    width: 26px;
+    border-bottom: 1px dashed #66FFFF;
+    z-index: 1;
+}
+
 :root {
   --glass-bg: linear-gradient(160deg, 
               rgba(255, 255, 255, 0.08)) !important;
@@ -628,11 +678,11 @@ input,
   --h3-color: #6BCB77;
   --h4-color: #4D96FF;
   --h5-color: #A66DD4;
-  --h6-color: #FF9F1C;
+  --h6-color: #FFA500;
 }
 
 body * {
-  font-family: "SimSun", "STSong", "Microsoft YaHei", serif !important;
+  font-family: Helvetica, Arial, sans-serif !important;
   font-family: var(--modern-font) !important;
   text-shadow: none !important;
   -webkit-font-smoothing: auto !important;
@@ -733,24 +783,31 @@ h6 {
 
 .modal.alert-message.notice {
   position: fixed;
-  top: 50%;
+  top: 10%;  
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   width: auto;
-  min-width: 300px;
+  min-width: 400px;
   max-width: 90%;
-  margin: 0 auto;
+  max-height: 400px;  
   padding: 20px;
-  text-align: center;
+  text-align: center;  
   z-index: 9999;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background: #f0f9eb !important; 
+  border: 2px solid #67C23A !important; 
   border-radius: 8px;
-  background: white;
+  box-shadow: 0 4px 12px rgba(102, 194, 58, 0.15); 
+  font-size: 16px;
+  color: #3d8b3d !important; 
+  text-align: center; 
 }
 
 .modal.alert-message.notice p {
   margin: 0;
   line-height: 1.5;
+  color: #3d8b3d !important;  
+  font-weight: bold; 
+  text-align: center; 
 }
 
 .cbi-section,
@@ -892,18 +949,14 @@ ul.tabs li.active, ul.cbi-tabmenu li.cbi-tab {
     backdrop-filter: blur(8px) brightness(0.98) !important;
 }
 
-.table.cbi-section-table tr:nth-child(even) td {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(6px) brightness(1.05) !important;
-}
-
 .item::after {
     font-family: "spectra" !important;
-    font-weight: 900 !important;
     content: "\e900" !important;
-    font-size: 16px !important; 
-    margin-left: 8px; 
-    border-radius: 5px !important;
+    padding: 0.5em 1em !important;
+    font-size: 1.1em !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    min-width: 2.5em;
     cursor: pointer; 
 }
 
@@ -951,7 +1004,7 @@ ul.tabs li.active, ul.cbi-tabmenu li.cbi-tab {
   font-size: 1em !important;
   font-weight: normal !important;
   border-radius: 8px !important;
-  min-width: 6em;
+  min-width: 2.5em;
 
   align-items: center!important;
   justify-content: center;
@@ -966,7 +1019,6 @@ ul.tabs li.active, ul.cbi-tabmenu li.cbi-tab {
     overflow: hidden;     
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
 }
-
 .btn.cbi-button-positive:hover,
 .btn.cbi-button-action:hover,
 .btn.cbi-button-neutral:hover {
@@ -1099,9 +1151,9 @@ button.cbi-button {
 }
 
 .pure-u-2-3 h4 {
-    border-radius: 8px;
-    padding: 8px; 
-    background: #E6E6FA; 
+    border-radius: 8px !important; 
+    padding: 8px !important; 
+    background: #E6E6FA !important; 
 }
 
 .block > .pure-u-1-3 {
@@ -1209,12 +1261,13 @@ a.food[data-title="Log_out"]:hover::after {
     color: #ff4444;
     transform: translateY(-50%) scale(1.1);
 }
-
 .cbi-section-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background-color: #1a1a1a !important; 
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
     color: #ffffff !important;
 }
 
@@ -1224,7 +1277,9 @@ a.food[data-title="Log_out"]:hover::after {
 }
 
 .cbi-section-table tbody {
-    background-color: #1a1a1a !important; 
+    background: rgba(37, 37, 38, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 }
 
 .cbi-section-table tr {
@@ -1245,7 +1300,10 @@ a.food[data-title="Log_out"]:hover::after {
 }
 
 .cbi-section-table tr:hover {
-    background-color: #3498db !important; 
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
 }
 
 .cbi-input-checkbox {
@@ -1262,37 +1320,74 @@ a.food[data-title="Log_out"]:hover::after {
 }
 
 .cbi-section-table input[type="text"], .cbi-section-table input[type="hidden"] {
-    background-color: #1a1a1a !important;
+    background: rgba(0, 0, 0, 0.26) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(10px) !important;
     color: #ffffff !important;
-    border: 1px solid #404040 !important;
 }
 
 .cbi-section-table select {
-    background-color: #1a1a1a !important;
+    background: rgba(255, 255, 255, 0.26) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(10px) !important;
     color: #ffffff !important;
-    border: 1px solid #404040 !important;
 }
 
 #add_link_div {
-    background-color: rgba(26, 26, 26, 0.8) !important; 
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(64, 64, 64, 0.5) !important;
+    background-color: rgba(0, 80, 200, 0.95) !important; 
+    backdrop-filter: blur(3px) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.5) !important; 
     border-radius: 8px !important;
-    padding: 20px !important;
 }
 
 #nodes_link {
-    width: 100% !important;
-    height: 100px !important;
-    background-color: rgba(26, 26, 26, 0.8) !important; 
-    border: 1px solid rgba(64, 64, 64, 0.5) !important;
-    color: #ffffff !important;
-    padding: 10px !important;
-    border-radius: 3px !important;
+    background-color: rgba(255, 255, 255, 0.9) !important; 
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 5px !important; 
+}
+
+.modal {
+    padding: 30px; 
+    background: linear-gradient(145deg, #004e92, #000428); 
+    backdrop-filter: blur(15px); 
+    border-radius: 12px; 
+    color: #fff; 
+
+    overflow-y: auto; 
+    margin: 0 auto; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); 
+}
+
+.btn {
+    border-radius: 8px; 
+    padding: 10px 20px; 
+    background-color: #007bff; 
+    color: white; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.btn:hover {
+    background-color: #0056b3; 
+    transform: scale(1.1); 
+}
+
+.warning-text {
+    color: red !important;
+    font-weight: bold !important;
+}
+
+table .td {
+    color: white !important; 
+}
+
+a:hover {
+    color: white !important; 
 }
 
 .cbi-section-node {
-    background-color: rgba(26, 26, 26, 0.8) !important;
+    background-color: rgba(26, 26, 26, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(64, 64, 64, 0.5) !important;
     border-radius: 8px !important;
@@ -1311,28 +1406,54 @@ a.food[data-title="Log_out"]:hover::after {
 }
 
 .create-item-input {
-    background-color: rgba(26, 26, 26, 0.8) !important;
+    caret-color: #00ff00 !important;
+    background-color: rgba(26, 26, 26, 0.6) !important;
     border: 1px solid rgba(64, 64, 64, 0.5) !important;
     color: #ffffff !important;
     padding: 5px !important;
     border-radius: 3px !important;
 }
 
+.cbi-dropdown[open] > ul.dropdown > li:hover {
+    background-color: rgba(26, 26, 26, 0.8) !important;
+    background: rgba(83, 195, 27, 0.6) !important;  
+    color: #fff !important;  
+    cursor: pointer !important;  
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: background 0.2s ease-in-out;  
+}
+
 .cbi-value-description {
-    color: #40A9FF !important;
+    color: #03A9F4 !important;
     font-size: 1em !important;
+    font-weight: 500;
     margin-top: 5px !important;
+    text-shadow: -1px -1px 2px #444, 1px 1px 2px #000 !important; 
 }
 
 input[type="checkbox"] {
-    background-color: rgba(26, 26, 26, 0.8) !important;
-    backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(64, 64, 64, 0.5) !important;
-    border-radius: 3px !important;
+    width: 18px !important; 
+    height: 18px !important; 
+    border: 2px solid #888 !important; 
+    background-color: #fff !important; 
+    appearance: none !important; 
+    outline: none !important; 
+    border-radius: 3px !important; 
+    cursor: pointer !important; 
+    transition: background-color 0.3s ease, border-color 0.3s ease !important; 
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4CAF50 !important; 
+    border-color: #4CAF50 !important; 
+}
+
+input[type="checkbox"]:hover {
+    background-color: #f1f1f1 !important; 
 }
 
 .action[data-v-127a3100] {
-    background-color: rgba(20, 20, 20, 0.85) !important;
+    background-color: rgba(20, 20, 20, 0.1) !important;
     backdrop-filter: blur(15px) !important;
     border-radius: 10px !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -1342,7 +1463,7 @@ input[type="checkbox"] {
 }
 
 ul[data-v-b8dfe98c] {
-    background-color: rgba(20, 20, 20, 0.85) !important;
+    background-color: rgba(20, 20, 20, 0.1) !important;
     backdrop-filter: blur(15px) !important;
     border-radius: 10px !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -1373,7 +1494,7 @@ ul[data-v-b8dfe98c] li[data-v-b8dfe98c]:hover {
 .network-container, 
 .nas-container_card, 
 .app-container {
-    background: rgba(25, 25, 25, 0.7) !important;
+    background: rgba(25, 25, 25, 0.1) !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
@@ -1393,7 +1514,7 @@ ul[data-v-b8dfe98c] li[data-v-b8dfe98c]:hover {
 }
 
 .progress {
-    background: rgba(100, 100, 100, 0.4) !important;
+    background: rgba(100, 100, 100, 0.1) !important;
     border-radius: 5px;
 }
 .progress-value {
@@ -1403,7 +1524,7 @@ ul[data-v-b8dfe98c] li[data-v-b8dfe98c]:hover {
 .item-label,
 .disk-item,
 .domain-item {
-    background: rgba(50, 50, 50, 0.3) !important;
+    background: rgba(50, 50, 50, 0.1) !important;
     border-radius: 8px;
     padding: 12px 15px !important;
     margin: 8px 0 !important;
@@ -1421,32 +1542,46 @@ svg path {
 }
 
 .app-container_status-label[data-v-08006dd5] {
-    background: rgba(20, 20, 20, 0.85) !important;
-    backdrop-filter: blur(15px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 10px !important;
+    -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
+    background: rgba(37, 37, 38, 0.1));
+    border-radius: 10px;
 }
 
 .app-container_status-container[data-v-08006dd5] {
-    background: rgba(30, 30, 30, 0.6) !important;
+    background: rgba(30, 30, 30, 0.1) !important;
     border-radius: 8px !important;
 }
 
 .app-container_status-container[data-v-08006dd5] {
-    background: rgba(20, 20, 20, 0.85) !important;
+    background: rgba(20, 20, 20, 0.1) !important;
     backdrop-filter: blur(15px) !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
     border-radius: 10px !important;
 }
 
 .app-container_status-label_block[data-v-08006dd5] {
-    background: rgba(45, 45, 45, 0.5) !important;
+    background: rgba(37, 37, 38, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 6px !important;
 }
 
+span.devise[data-v-08006dd5] {
+    color: white !important;
+}
+
+.container_success,
+.container_time,
+.container_content {
+    color: white !important;
+}
+
+.tit[data-v-ba3ddae2] {
+    color: white !important; 
+}
+
 .app-container_status-label_bg[data-v-02f10ac5] {
-    background: rgba(40, 40, 40, 0.6) !important;
+    background: rgba(40, 40, 40, 0.1) !important;
     border-radius: 8px !important;
     padding: 12px !important;
 }
@@ -1553,12 +1688,200 @@ a[href="#"][onclick*="/cgi-bin/luci/admin/services/passwall2/get_socks_log"]:act
 [data-page="admin-status-routes"] #view p textarea,
 [data-page="admin-system-crontab"] #view p textarea {
   color: #ccc;
-  background-color: #0000009a;
+  background: rgba(37, 37, 38, 0.1); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
 }
 #view > .spinning {
   background: #333333 !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03) !important;
 }
+.wrapper span {
+	position: fixed;
+	bottom: -180px;
+	height: 50px;
+	width: 50px;
+	z-index: 9999; 
+	background-color: #18191f;
+	box-shadow: 0 0 50px cyan, 0 0 100px cyan, 0 0 150px cyan, 0 0 200px cyan;
+	animation: animate 15s linear infinite;
+}
+
+.wrapper span:nth-child(1) {
+	left: 60px;
+	animation-delay: 0.6s;
+}
+.wrapper span:nth-child(2) {
+	left: 10%;
+	animation-delay: 3s;
+	width: 60px;
+	height: 60px;
+}
+.wrapper span:nth-child(3) {
+	left: 20%;
+	animation-delay: 2s;
+}
+.wrapper span:nth-child(4) {
+	left: 30%;
+	animation-delay: 5s;
+	width: 80px;
+	height: 80px;
+}
+.wrapper span:nth-child(5) {
+	left: 40%;
+	animation-delay: 1s;
+}
+.wrapper span:nth-child(6) {
+	left: 50%;
+	animation-delay: 7s;
+}
+.wrapper span:nth-child(7) {
+	left: 60%;
+	animation-delay: 6s;
+	width: 100px;
+	height: 100px;
+}
+.wrapper span:nth-child(8) {
+	left: 70%;
+	animation-delay: 8s;
+}
+.wrapper span:nth-child(9) {
+	left: 80%;
+	animation-delay: 6s;
+	width: 90px;
+	height: 90px;
+}
+.wrapper span:nth-child(10) {
+	left: 90%;
+	animation-delay: 4s;
+}
+@keyframes animate {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	90% {
+		opacity: .7;
+	}
+	100% {
+		transform: translateY(-1200px) rotate(360deg);
+		opacity: 0;
+	}
+}
+@media screen and (max-width: 600px) {
+    .wrapper span {
+        display: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+  td p {
+    white-space: nowrap; 
+    text-align: center;
+  }
+
+  td p img {
+    margin: 0; 
+    width: auto; 
+    height: auto; 
+  }
+}
+
+@media (max-width: 600px) {
+  #hid_2,
+  #hid_3 {
+    display: none !important;
+  }
+
+  form.custom-style {
+    padding: 5px !important;
+  }
+
+  form.custom-style h2 {
+    margin-bottom: 10px !important;
+  }
+
+  form.custom-style .cbi-map-descr {
+    margin-bottom: 10px !important;
+  }
+
+  form.custom-style table,
+  form.custom-style td {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+
+  form.custom-style td {
+    padding: 5px 0 !important;
+  }
+
+  form.custom-style fieldset {
+    margin: 10px 0 !important;
+  }
+
+  form.custom-style input[type="button"],
+  form.custom-style input[type="submit"] {
+    padding: 5px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  form.custom-style .radio-button {
+    margin-top: 5px !important;
+  }
+
+  form.custom-style .radio-button label {
+    padding: 2px 5px !important;
+  }
+
+  form.custom-style .select-popup {
+    padding: 5px !important;
+  }
+
+  form.custom-style .select-popup-header {
+    margin-bottom: 5px !important;
+  }
+
+  form.custom-style .select-option {
+    padding: 2px !important;
+  }
+
+  form.custom-style .custom-option-input {
+    margin-top: 2px !important;
+    padding: 2px !important;
+  }
+
+  form.custom-style #hid_btn {
+    text-align: center !important;
+  }
+
+  form.custom-style #hid_btn .arrow-down {
+    margin: 5px 0 !important;
+  }
+
+  form.custom-style #hid_1,
+  form.custom-style #state {
+    display: block !important;
+    margin: 5px 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .tr {
+    display: flex;
+    flex-wrap: nowrap;  
+  }
+
+  div[style*="display: flex"] {
+    display: none !important;
+  }
+}
+
+  p[style*="float: right; margin: 0.5% 2.5% 0 0;"] {
+    display: none !important;
+  }
+}
+
 @media screen and (min-width: 600px) {
   ::-webkit-scrollbar-thumb {
     background: #0000009a;
@@ -1575,4 +1898,12 @@ a[href="#"][onclick*="/cgi-bin/luci/admin/services/passwall2/get_socks_log"]:act
     background-color: #1e1e1e;
     box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.35);
   }
+}
+
+@media (max-width: 768px) {
+    .cbi-dropdown[open] > ul.preview {
+        width: 100vw !important;
+        left: 0 !important;
+        right: auto !important;
+    }
 }
